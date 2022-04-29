@@ -1,17 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import {Star} from "./Star/Star";
+export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 type RatingType = {
-    title: string
-    value: number
-    setValue: (v: number) => void
+    title?: string
+    value: RatingValueType
+    setValue: (v: RatingValueType) => void
 }
-export const Rating = (props:RatingType) => {
-
-const [value,setValue] = useState(4)
-
+export const Rating:React.FC<RatingType> = ({value, setValue, title}) => {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3>{title}</h3>
            <Star v={1} selected={value > 0} setValue={setValue}/>
            <Star v={2} selected={value > 1} setValue={setValue}/>
            <Star v={3} selected={value > 2} setValue={setValue}/>

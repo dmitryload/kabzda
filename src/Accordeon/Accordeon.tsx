@@ -1,24 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
 
 type AccordeonType = {
     title: string
     users: string[]
+    collapsed: boolean
+    setCollapsed: (collapsed: boolean) => void
 }
-export const Accordeon = (props: AccordeonType) => {
-    const [collapsed, setCollapsed] = useState(false)
-    let userStyle = {
-        display: collapsed ? "inherit" : "none"
-    }
+export const Accordeon:React.FC<AccordeonType> = ({title,
+                                                      setCollapsed,
+                                                      collapsed,
+                                                      users}) => {
     return (
         <div>
-            <h2 onClick={() => {setCollapsed(!collapsed)}}>{props.title}</h2>
-            <ul style={userStyle}>
-                {props.users.map((u) => {
+            <h2 onClick={() => setCollapsed(!collapsed)}>{title}</h2>
+            {collapsed && <ul>
+                {users.map((u) => {
                     return (
                         <li>{u}</li>
                     )
                 })}
-            </ul>
+            </ul>}
         </div>
     )
 }
