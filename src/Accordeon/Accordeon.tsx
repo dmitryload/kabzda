@@ -4,19 +4,20 @@ type AccordeonType = {
     title: string
     users: string[]
     collapsed: boolean
-    setCollapsed: (collapsed: boolean) => void
+    onClickHandl: () => void
 }
-export const Accordeon:React.FC<AccordeonType> = ({title,
-                                                      setCollapsed,
-                                                      collapsed,
-                                                      users}) => {
+export const Accordeon: React.FC<AccordeonType> = ({
+                                                       title,
+                                                       collapsed,
+                                                       users, onClickHandl
+                                                   }) => {
     return (
         <div>
-            <h2 onClick={() => setCollapsed(!collapsed)}>{title}</h2>
+            <h2 onClick={onClickHandl}>{title}</h2>
             {collapsed && <ul>
-                {users.map((u) => {
+                {users.map((u, index) => {
                     return (
-                        <li>{u}</li>
+                        <li key={index}>{u}</li>
                     )
                 })}
             </ul>}

@@ -1,0 +1,27 @@
+.select {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #f3f3f3;
+    text-align: center;
+    cursor: pointer;
+}
+.title {
+    padding: 10px;
+    min-width: 50px;
+}
+.items, .items__active{
+    padding: 10px;
+    position: absolute;
+    border: 1px solid red;
+    min-width: 50px;
+}
+.items {
+    display: none;
+}
+.items__active {
+    display: block;
+}
+.item__active {
+    background-color: green;
+    color: #f3f3f3;
+}
